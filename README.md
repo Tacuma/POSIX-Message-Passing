@@ -24,28 +24,28 @@ Structure of External Process
 *	A central box with a value of 1000 is declared and initialized.
 *	When the process is run, a construct exists to make sure that there are 2 extra arguments, one for the process ID and the other for the initial temperature.
 *	The ID for the central mailbox is set up
-*	The ID for the external processâ€™ mailbox is set up. The ID of this mailbox is based on the process ID + the central box number which is 1000.
+*	The ID for the external process’ mailbox is set up. The ID of this mailbox is based on the process ID + the central box number which is 1000.
 *	Sending and receiving: 
-*	A loop is set up. While central processâ€™s message stability is != 1, the loop continues.  
+*	A loop is set up. While central process’s message stability is != 1, the loop continues.  
     *	A message is sent to the central Mailbox.
     *	A message is received from of the external mailbox
-    *	If the incoming messageâ€™s stability is 1, then exit the loop and output the final temperature
-    *	If it isnâ€™t, calculate a new temperature
+    *	If the incoming message’s stability is 1, then exit the loop and output the final temperature
+    *	If it isn’t, calculate a new temperature
 
 The structure of the Central Process
-The Central Processâ€™ Structure is slightly more complicated. Because it sends and receives messages from  the 4 external processes, it must have the IDs for its own mailbox and for the external mailboxes it messages.
+The Central Process’ Structure is slightly more complicated. Because it sends and receives messages from  the 4 external processes, it must have the IDs for its own mailbox and for the external mailboxes it messages.
 *	The central process contains 2 structs, extm and centm. The central process receives messages in the extm struct and sends messages via the centm struct. There is a construct that ensures the correct number of arguments is given.
 *	When the central process runs a central ID is set up. 
 *	A for loop is also run to set up the external process mailboxes.
-*	The central process then goes into a loop, staying in it until the centmâ€™s stability is = 1
+*	The central process then goes into a loop, staying in it until the centm’s stability is = 1
 *	In the Loop:  
-    o	The central message process reads the temperatures from its mailbox using a loop. It tallies the total and compares each external messageâ€™s temp to its temperature. If the match it takes a note in a variable called finish. If they are not equal, a new central temperature is calculated and sent back to the external processes. If the temperatures of the external processes match the central process on two successive occasions, then the temperatures are stabilized. A message is then sent back to the external processes with the value of centmâ€™s stability =1, which ends the external threads and has them print out their temperatures.
+    o	The central message process reads the temperatures from its mailbox using a loop. It tallies the total and compares each external message’s temp to its temperature. If the match it takes a note in a variable called finish. If they are not equal, a new central temperature is calculated and sent back to the external processes. If the temperatures of the external processes match the central process on two successive occasions, then the temperatures are stabilized. A message is then sent back to the external processes with the value of centm’s stability =1, which ends the external threads and has them print out their temperatures.
 
 
 
 
 
-Output:
+#Output:
 	takuma@ubuntu:~/Desktop/C Programs$ ./run.sh   
 	Beginning Central Process. Temperature = 60   
 	Beginning External Process 4. Temperature = 40   

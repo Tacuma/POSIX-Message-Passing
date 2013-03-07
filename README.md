@@ -5,7 +5,7 @@
 Structs, Processes, Mailboxes, Message Queues
 
 
-#Description
+#Description:
 Four external processes will commuicate temperatures to a central process, which in turn will reply with its own temperature
 and will indicate whether the entire system has stabilized. Each process will receive its initial temperature upon creation
 and will recalculate a new temperature according to two forumlas.

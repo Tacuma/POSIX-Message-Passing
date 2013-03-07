@@ -2,7 +2,7 @@
 
 
 #Data Structures/Concepts Used:
-Structs, Processes, Mailboxes, Message Queues
+Structs, Processes, Mailboxes, Message Queues.
 
 
 #Description:

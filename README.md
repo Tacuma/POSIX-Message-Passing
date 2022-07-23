@@ -1,11 +1,11 @@
-#POSIX Message Passing
+# POSIX Message Passing
 
 
-#Data Structures/Concepts Used:
+# Data Structures/Concepts Used:
 Structs, Processes, Mailboxes, Message Queues.
 
 
-#Description:
+# Description:
 Four external processes will commuicate temperatures to a central process, which in turn will reply with its own temperature
 and will indicate whether the entire system has stabilized. Each process will receive its initial temperature upon creation
 and will recalculate a new temperature according to two forumlas.
@@ -17,7 +17,7 @@ each process will output the final stabilized temperature. If the system has not
 will send its new temperature to the mailbox for each of the outer processes and await their replies. The processes will 
 continue to run until the temperature has stabilized.
 
-####Structure of External Process
+#### Structure of External Process
 *   The external process has 2 stucts, extm and centm.
     +   	The extm represents messages sent to the central process and 
     +	    The centm represents messages that are received from the central process.
@@ -32,7 +32,7 @@ continue to run until the temperature has stabilized.
     *	If the incoming message's stability is 1, then exit the loop and output the final temperature
     *	If it isn't, calculate a new temperature
 
-####Structure of the Central Process        
+#### Structure of the Central Process        
 The Central Process' Structure is slightly more complicated. Because it sends and receives messages from  the 4 external processes, it must have the IDs for its own mailbox and for the external mailboxes it messages.
 *	The central process contains 2 structs, extm and centm. The central process receives messages in the extm struct and sends messages via the centm struct. There is a construct that ensures the correct number of arguments is given.
 *	When the central process runs a central ID is set up. 
@@ -45,7 +45,7 @@ The Central Process' Structure is slightly more complicated. Because it sends an
 
 
 
-#Output:
+# Output:
 	takuma@ubuntu:~/Desktop/C Programs$ ./run.sh   
 	Beginning Central Process. Temperature = 60   
 	Beginning External Process 4. Temperature = 40   
